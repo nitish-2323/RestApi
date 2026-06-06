@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: RESTapi
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/companyemp
+    username: root
+    password: 1234
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
