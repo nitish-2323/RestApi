@@ -29,4 +29,9 @@ public class MyService {
        }
        return  null;
     }
+
+    public Mydto save(Mydto dto) {
+        Mydto obj  =repo.save(dto);
+        return obj;
+    }
 }

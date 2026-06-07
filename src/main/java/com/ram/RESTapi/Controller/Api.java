@@ -2,11 +2,15 @@ package com.ram.RESTapi.Controller;
 
 
 import com.ram.RESTapi.Model.Mydto;
+import com.ram.RESTapi.Model.RepoDto;
 import com.ram.RESTapi.Service.MyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class Api {
@@ -49,5 +53,18 @@ public class Api {
               Mydto obj=myService.update(dto,id);
           return new ResponseEntity<String>("update Sucessfully:",HttpStatus.OK);
          }
+     @Autowired
+     private RepoDto repoDto;
+     @PostMapping("/postDTO")
+     public ResponseEntity<RepoDto> object(@RequestBody Mydto dto){
+             Mydto obj = myService.save(dto);
+             repoDto.setError(false);
+             repoDto.setMsg("ram executed the post method");
+             repoDto.setStatusCode(HttpStatus.CREATED.value());
+             List<Mydto> mydtoList = new ArrayList<>();
+             mydtoList.add(obj);
+             repoDto.setMydtos(mydtoList);
+             return  new ResponseEntity<RepoDto>(repoDto,HttpStatus.CREATED);
+     }
     }
 
