@@ -1,6 +1,7 @@
 package com.ram.RESTapi.Controller;
 
 
+import com.ram.RESTapi.Execption.usernotFoundExecption;
 import com.ram.RESTapi.Model.Mydto;
 import com.ram.RESTapi.Model.RepoDto;
 import com.ram.RESTapi.Service.MyService;
@@ -28,6 +29,9 @@ public class Api {
         }
             @GetMapping("/ram")
           public ResponseEntity<String>get(){
+                if(true) {
+                    throw  new RuntimeException();
+                }
             return new ResponseEntity<String>("Ram executed the get method",HttpStatus.OK);
           }
           @Autowired
@@ -35,6 +39,7 @@ public class Api {
           @PostMapping("/insert")
        public ResponseEntity<String>post(@RequestBody Mydto dto){
                 myService.add(dto);
+
                 return new ResponseEntity<String>("ram executed the post method",HttpStatus.CREATED);
 
           }
