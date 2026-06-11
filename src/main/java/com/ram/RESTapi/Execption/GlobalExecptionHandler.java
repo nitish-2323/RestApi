@@ -9,7 +9,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.time.LocalDateTime;
 
-@RestControllerAdvice
+@RestControllerAdvice   //every execption request  this class will  response
 public class GlobalExecptionHandler {
        @ExceptionHandler(Exception.class)
        public ResponseEntity<ErrorDetails> genericException(Exception e, WebRequest request){
@@ -20,5 +20,7 @@ public class GlobalExecptionHandler {
            details.setPath(request.getDescription(false));
            return  new ResponseEntity<>(details, HttpStatus.INTERNAL_SERVER_ERROR);
        }
+
+
 
 }

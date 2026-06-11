@@ -53,9 +53,13 @@ public class Api {
               myService.delete(id);
               return new ResponseEntity<String>("Using Requestparam  Delete Sucessfully:",HttpStatus.OK);
            }
+           //user not found execption in put
          @PutMapping("/put/{id}")
          public ResponseEntity<String> put(@RequestBody Mydto dto,@PathVariable int id){
               Mydto obj=myService.update(dto,id);
+              if(obj==null){
+                  throw new usernotFoundExecption("user not found");
+              }
           return new ResponseEntity<String>("update Sucessfully:",HttpStatus.OK);
          }
      @Autowired
