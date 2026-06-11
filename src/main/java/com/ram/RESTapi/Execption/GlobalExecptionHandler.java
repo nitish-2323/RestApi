@@ -20,7 +20,19 @@ public class GlobalExecptionHandler {
            details.setPath(request.getDescription(false));
            return  new ResponseEntity<>(details, HttpStatus.INTERNAL_SERVER_ERROR);
        }
+    @ExceptionHandler(usernotFoundExecption.class)
+    public ResponseEntity<ErrorDetails> userNotFound(
+            usernotFoundExecption e,
+            WebRequest request) {
 
+        ErrorDetails details = new ErrorDetails();
+        details.setDateTime(LocalDateTime.now());
+        details.setStatus(HttpStatus.NOT_FOUND.value());
+        details.setMsg(e.getMessage());
+        details.setPath(request.getDescription(false));
+
+        return new ResponseEntity<>(details, HttpStatus.NOT_FOUND);
+    }
 
 
 }
