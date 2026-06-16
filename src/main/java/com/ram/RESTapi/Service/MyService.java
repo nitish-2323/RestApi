@@ -1,14 +1,14 @@
 package com.ram.RESTapi.Service;
 
 import com.ram.RESTapi.Model.Mydto;
-import com.ram.RESTapi.ReopiStry.Repointer;
+import com.ram.RESTapi.ReopiStry.repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MyService {
     @Autowired
-    private Repointer repo;
+    private repository repo;
 
 
     public Mydto add(Mydto dto) {
